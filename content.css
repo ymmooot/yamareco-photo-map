@@ -1,0 +1,158 @@
+/* 地図上のマーカー */
+.yrpm-marker {
+  background: transparent;
+  border: 0;
+}
+.yrpm-marker .yrpm-pin {
+  box-sizing: border-box;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #1a73e8;
+  color: #fff;
+  font: bold 10px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.yrpm-marker.yrpm-src-gps .yrpm-pin { background: #188038; }
+.yrpm-marker.yrpm-src-approx .yrpm-pin { background: #e8710a; }
+.yrpm-marker.yrpm-active .yrpm-pin,
+.yrpm-marker:hover .yrpm-pin {
+  transform: scale(1.35);
+  background: #e3007d;
+}
+
+/* ポップアップ */
+.yrpm-popup {
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+}
+.yrpm-popup .yrpm-popup-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.yrpm-popup .yrpm-popup-thumb {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* 写真ごとに高さが変わって矢印の位置がずれないよう固定 */
+  height: 176px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yrpm-popup .yrpm-nav {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: #f0f0f0;
+  color: #444;
+  font-size: 12px;
+  cursor: pointer;
+}
+.yrpm-popup .yrpm-nav:hover:not(:disabled) {
+  background: #e3007d;
+  color: #fff;
+}
+.yrpm-popup .yrpm-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.yrpm-popup img {
+  display: block;
+  max-width: 176px;
+  max-height: 176px;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+.yrpm-popup .yrpm-popup-caption {
+  text-align: left;
+  white-space: pre-wrap;
+  /* 高さ固定(約3行)。長い場合はスクロール */
+  height: 4.2em;
+  line-height: 1.4;
+  overflow: auto;
+  margin: 4px 0;
+}
+.yrpm-popup .yrpm-popup-meta {
+  color: #777;
+  font-size: 11px;
+}
+.yrpm-popup .yrpm-popup-meta a { margin-left: 6px; }
+
+/* 地図右上のトグルコントロール */
+.yrpm-control {
+  background: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  line-height: 1.6;
+  color: #333;
+}
+.yrpm-control label {
+  cursor: pointer;
+  margin: 0;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.yrpm-control .yrpm-legend {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+  font-size: 10px;
+  color: #666;
+}
+.yrpm-control .yrpm-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+.yrpm-control .yrpm-legend .yrpm-lg-track::before { background: #1a73e8; }
+.yrpm-control .yrpm-legend .yrpm-lg-gps::before { background: #188038; }
+.yrpm-control .yrpm-legend .yrpm-lg-approx::before { background: #e8710a; }
+
+/* 写真一覧側のバッジ */
+.yrpm-badge {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  z-index: 5;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: rgba(26, 115, 232, 0.92);
+  color: #fff;
+  font: bold 11px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.yrpm-badge.yrpm-src-gps { background: rgba(24, 128, 56, 0.92); }
+.yrpm-badge.yrpm-src-approx { background: rgba(232, 113, 10, 0.92); }
+.yrpm-badge.yrpm-none {
+  background: rgba(120, 120, 120, 0.85);
+  cursor: default;
+}
+.yrpm-badge:hover { color: #fff; text-decoration: none; }
+.photo-list-wrap-item.yrpm-flash {
+  outline: 3px solid #e3007d;
+  outline-offset: 2px;
+  transition: outline-color 0.3s;
+}
